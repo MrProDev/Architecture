@@ -17,6 +17,6 @@ class CounterService with ReactiveServiceMixin {
   }
 
   void doubleCounter() {
-    _counter.value *= 2;
+    _counter.value += 2;
   }
 }

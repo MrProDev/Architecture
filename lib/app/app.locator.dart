@@ -7,6 +7,7 @@
 // ignore_for_file: public_member_api_docs
 
 // ignore: depend_on_referenced_packages
+
 import 'package:architecture/services/counter_service.dart';
 // ignore: depend_on_referenced_packages
 import 'package:stacked_core/stacked_core.dart';
@@ -23,5 +24,6 @@ Future<void> setupLocator(
 // Register dependencies
   locator.registerLazySingleton(() => NavigationService());
 
+  // Counter dependencies
   locator.registerLazySingleton(() => CounterService());
 }

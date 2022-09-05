@@ -17,15 +17,14 @@ class PostsView extends StatelessWidget {
                 child: CircularProgressIndicator.adaptive(),
               )
             : !model.hasError
-                ? ListView.builder(
+                ? ListView.separated(
                     itemCount: locator<PostsService>().posts.length,
-                    itemBuilder: (context, index) => Container(
-                      height: 50,
-                      padding: const EdgeInsets.symmetric(horizontal: 35),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 10),
+                    itemBuilder: (context, index) => ListTile(
+                      tileColor: Colors.pink.withOpacity(0.1),
+                      title: Text(
                         model.data![index].title!,
-                        style: const TextStyle(fontSize: 20),
                       ),
                     ),
                   )

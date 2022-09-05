@@ -6,5 +6,5 @@ import 'package:stacked/stacked.dart';
 class PostsViewModel extends FutureViewModel<List<Post>> {
   @override
   Future<List<Post>> futureToRun() =>
-      locator<PostsService>().getPostsForUser(5);
+      locator<PostsService>().getPostsForUser(10);
 }

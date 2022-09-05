@@ -2,6 +2,7 @@ import 'package:architecture/services/api.dart';
 import 'package:architecture/services/counter_service.dart';
 import 'package:architecture/services/media_service.dart';
 import 'package:architecture/services/posts_service.dart';
+import 'package:architecture/ui/views/bottom_sheet_example/bottom_sheet_example_view.dart';
 import 'package:architecture/ui/views/dark_light/dark_light_view.dart';
 import 'package:architecture/ui/views/multiple_themes/multiple_themes_view.dart';
 import 'package:architecture/ui/views/dialog_example/dialog_example_view.dart';
@@ -32,10 +33,12 @@ import 'package:stacked_services/stacked_services.dart';
     MaterialRoute(page: DialogExampleView),
     MaterialRoute(page: MultipleThemesView),
     MaterialRoute(page: DarkLightView),
+    MaterialRoute(page: BottomSheetExampleView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: DialogService),
+    LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: Api),
     LazySingleton(classType: CounterService),
     LazySingleton(classType: MediaService),

@@ -10,12 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../ui/views/bottom_sheet_example/bottom_sheet_example_view.dart';
 import '../ui/views/dark_light/dark_light_view.dart';
-import '../ui/views/multiple_themes/multiple_themes_view.dart';
 import '../ui/views/dialog_example/dialog_example_view.dart';
 import '../ui/views/future_example/future_example_view.dart';
 import '../ui/views/home/home_view.dart';
 import '../ui/views/image_picker/image_picker_view.dart';
+import '../ui/views/multiple_themes/multiple_themes_view.dart';
 import '../ui/views/partial_builds/partial_builds_view.dart';
 import '../ui/views/posts_example/posts_view.dart';
 import '../ui/views/reactive_example/reactive_example_view.dart';
@@ -34,6 +35,7 @@ class Routes {
   static const String dialogExampleView = '/dialog-example-view';
   static const String multipleThemesView = '/multiple-themes-view';
   static const String darkLightView = '/dark-light-view';
+  static const String bottomSheetExampleView = '/bottom-sheet-example-view';
   static const all = <String>{
     startupView,
     homeView,
@@ -46,6 +48,7 @@ class Routes {
     dialogExampleView,
     multipleThemesView,
     darkLightView,
+    bottomSheetExampleView,
   };
 }
 
@@ -64,6 +67,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.dialogExampleView, page: DialogExampleView),
     RouteDef(Routes.multipleThemesView, page: MultipleThemesView),
     RouteDef(Routes.darkLightView, page: DarkLightView),
+    RouteDef(Routes.bottomSheetExampleView, page: BottomSheetExampleView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -131,6 +135,12 @@ class StackedRouter extends RouterBase {
     DarkLightView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const DarkLightView(),
+        settings: data,
+      );
+    },
+    BottomSheetExampleView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const BottomSheetExampleView(),
         settings: data,
       );
     },
@@ -311,6 +321,22 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.darkLightView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToBottomSheetExampleView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.bottomSheetExampleView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

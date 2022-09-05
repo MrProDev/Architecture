@@ -1,3 +1,4 @@
+import 'package:architecture/app/app.locator.dart';
 import 'package:architecture/ui/views/future_example/future_example_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -8,7 +9,9 @@ class FutureExampleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FutureExampleViewModel>.reactive(
-      viewModelBuilder: () => FutureExampleViewModel(),
+      disposeViewModel: false,
+      initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () => locator<FutureExampleViewModel>(),
       builder: (context, model, child) => Scaffold(
         body: Center(
           child: Column(

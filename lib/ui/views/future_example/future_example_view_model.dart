@@ -1,5 +1,7 @@
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
+@Singleton()
 class FutureExampleViewModel extends FutureViewModel<String> {
   Future<String> getDataFromServer() async {
     await Future.delayed(const Duration(seconds: 2));

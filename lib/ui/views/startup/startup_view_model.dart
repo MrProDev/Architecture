@@ -12,4 +12,6 @@ class StartupViewModel extends BaseViewModel {
   void doSomething() {
     _navigationService.navigateTo(Routes.homeView);
   }
+
+  Future initialise() async {}
 }

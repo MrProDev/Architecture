@@ -1,5 +1,7 @@
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
+@Singleton()
 class StreamExampleViewModel extends StreamViewModel<int> {
   bool _swap = false;
 

@@ -11,16 +11,16 @@ class PostsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PostsViewModel>.reactive(
+      disposeViewModel: false,
+      initialiseSpecialViewModelsOnce: true,
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Posts'), 
-        ),
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(),
               )
             : !model.hasError
                 ? ListView.separated(
+                  key: const PageStorageKey('post-storage-key'),
                     itemCount: locator<PostsService>().posts.length,
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10),
@@ -35,6 +35,10 @@ class PostsView extends StatelessWidget {
                       title: Text(
                         model.data![index].title!,
                       ),
+                      subtitle: Text(
+                        model.data![index].body!,
+                      ),
+                      trailing: const Icon(Icons.star_border_outlined),
                     ),
                   )
                 : Container(
@@ -47,7 +51,7 @@ class PostsView extends StatelessWidget {
                     ),
                   ),
       ),
-      viewModelBuilder: () => PostsViewModel(),
+      viewModelBuilder: () => locator<PostsViewModel>(),
     );
   }
 }

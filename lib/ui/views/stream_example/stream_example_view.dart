@@ -1,3 +1,4 @@
+import 'package:architecture/app/app.locator.dart';
 import 'package:architecture/ui/views/stream_example/stream_example_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -8,7 +9,9 @@ class StreamExampleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<StreamExampleViewModel>.reactive(
-      viewModelBuilder: () => StreamExampleViewModel(),
+      disposeViewModel: false,
+      initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () => locator<StreamExampleViewModel>(),
       builder: (context, model, child) => Scaffold(
         body: Center(
           child: Text(model.data.toString()),

@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../ui/dark_light/dark_light_view.dart';
+import '../ui/multiple_themes/multiple_themes_view.dart';
 import '../ui/views/dialog_example/dialog_example_view.dart';
 import '../ui/views/future_example/future_example_view.dart';
 import '../ui/views/home/home_view.dart';
@@ -30,6 +32,8 @@ class Routes {
   static const String streamExampleView = '/stream-example-view';
   static const String postsView = '/posts-view';
   static const String dialogExampleView = '/dialog-example-view';
+  static const String multipleThemesView = '/multiple-themes-view';
+  static const String darkLightView = '/dark-light-view';
   static const all = <String>{
     startupView,
     homeView,
@@ -40,6 +44,8 @@ class Routes {
     streamExampleView,
     postsView,
     dialogExampleView,
+    multipleThemesView,
+    darkLightView,
   };
 }
 
@@ -56,6 +62,8 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.streamExampleView, page: StreamExampleView),
     RouteDef(Routes.postsView, page: PostsView),
     RouteDef(Routes.dialogExampleView, page: DialogExampleView),
+    RouteDef(Routes.multipleThemesView, page: MultipleThemesView),
+    RouteDef(Routes.darkLightView, page: DarkLightView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -111,6 +119,18 @@ class StackedRouter extends RouterBase {
     DialogExampleView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const DialogExampleView(),
+        settings: data,
+      );
+    },
+    MultipleThemesView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const MultipleThemesView(),
+        settings: data,
+      );
+    },
+    DarkLightView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const DarkLightView(),
         settings: data,
       );
     },
@@ -259,6 +279,38 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.dialogExampleView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToMultipleThemesView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.multipleThemesView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToDarkLightView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.darkLightView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

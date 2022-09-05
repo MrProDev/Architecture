@@ -2,7 +2,8 @@ import 'package:architecture/services/api.dart';
 import 'package:architecture/services/counter_service.dart';
 import 'package:architecture/services/media_service.dart';
 import 'package:architecture/services/posts_service.dart';
-import 'package:architecture/services/shared_preferences_service.dart';
+import 'package:architecture/ui/dark_light/dark_light_view.dart';
+import 'package:architecture/ui/multiple_themes/multiple_themes_view.dart';
 import 'package:architecture/ui/views/dialog_example/dialog_example_view.dart';
 import 'package:architecture/ui/views/future_example/future_example_view.dart';
 import 'package:architecture/ui/views/future_example/future_example_view_model.dart';
@@ -29,6 +30,8 @@ import 'package:stacked_services/stacked_services.dart';
     MaterialRoute(page: StreamExampleView),
     MaterialRoute(page: PostsView),
     MaterialRoute(page: DialogExampleView),
+    MaterialRoute(page: MultipleThemesView),
+    MaterialRoute(page: DarkLightView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
@@ -37,7 +40,6 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: CounterService),
     LazySingleton(classType: MediaService),
     LazySingleton(classType: PostsService),
-    LazySingleton(classType: SharedPreferencesService),
     LazySingleton(classType: PostsViewModel),
     LazySingleton(classType: StreamExampleViewModel),
     LazySingleton(classType: FutureExampleViewModel),

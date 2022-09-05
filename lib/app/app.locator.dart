@@ -14,7 +14,6 @@ import '../services/api.dart';
 import '../services/counter_service.dart';
 import '../services/media_service.dart';
 import '../services/posts_service.dart';
-import '../services/shared_preferences_service.dart';
 import '../ui/views/future_example/future_example_view_model.dart';
 import '../ui/views/posts_example/posts_viewmodel.dart';
 import '../ui/views/stream_example/stream_example_view_model.dart';
@@ -34,7 +33,6 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => CounterService());
   locator.registerLazySingleton(() => MediaService());
   locator.registerLazySingleton(() => PostsService());
-  locator.registerLazySingleton(() => SharedPreferencesService());
   locator.registerLazySingleton(() => PostsViewModel());
   locator.registerLazySingleton(() => StreamExampleViewModel());
   locator.registerLazySingleton(() => FutureExampleViewModel());

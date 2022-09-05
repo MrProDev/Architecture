@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../ui/dark_light/dark_light_view.dart';
-import '../ui/multiple_themes/multiple_themes_view.dart';
+import '../ui/views/dark_light/dark_light_view.dart';
+import '../ui/views/multiple_themes/multiple_themes_view.dart';
 import '../ui/views/dialog_example/dialog_example_view.dart';
 import '../ui/views/future_example/future_example_view.dart';
 import '../ui/views/home/home_view.dart';

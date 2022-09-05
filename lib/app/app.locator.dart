@@ -8,7 +8,10 @@
 
 // ignore: depend_on_referenced_packages
 
+import 'package:architecture/services/api.dart';
 import 'package:architecture/services/counter_service.dart';
+import 'package:architecture/services/media_service.dart';
+import 'package:architecture/services/posts_service.dart';
 // ignore: depend_on_referenced_packages
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -26,4 +29,13 @@ Future<void> setupLocator(
 
   // Counter dependencies
   locator.registerLazySingleton(() => CounterService());
+
+  // Media dependencies
+  locator.registerLazySingleton(() => MediaService());
+
+  // Api dependencies
+  locator.registerLazySingleton(() => Api());
+
+  // Post dependencies
+  locator.registerLazySingleton(() => PostsService());
 }

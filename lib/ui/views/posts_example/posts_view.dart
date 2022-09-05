@@ -23,6 +23,12 @@ class PostsView extends StatelessWidget {
                         const SizedBox(height: 10),
                     itemBuilder: (context, index) => ListTile(
                       tileColor: Colors.pink.withOpacity(0.1),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.pink,
+                        child: Text(
+                          index.toString(),
+                        ),
+                      ),
                       title: Text(
                         model.data![index].title!,
                       ),

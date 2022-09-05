@@ -12,6 +12,9 @@ class PostsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<PostsViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Posts'), 
+        ),
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(),

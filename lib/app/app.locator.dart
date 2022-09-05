@@ -10,6 +10,11 @@
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../services/api.dart';
+import '../services/counter_service.dart';
+import '../services/media_service.dart';
+import '../services/posts_service.dart';
+
 final locator = StackedLocator.instance;
 
 Future<void> setupLocator(
@@ -20,4 +25,8 @@ Future<void> setupLocator(
 
 // Register dependencies
   locator.registerLazySingleton(() => NavigationService());
+  locator.registerLazySingleton(() => Api());
+  locator.registerLazySingleton(() => CounterService());
+  locator.registerLazySingleton(() => MediaService());
+  locator.registerLazySingleton(() => PostsService());
 }

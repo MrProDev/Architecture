@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../ui/views/dialog_example/dialog_example_view.dart';
 import '../ui/views/future_example/future_example_view.dart';
 import '../ui/views/home/home_view.dart';
 import '../ui/views/image_picker/image_picker_view.dart';
@@ -28,6 +29,7 @@ class Routes {
   static const String reactiveExampleView = '/reactive-example-view';
   static const String streamExampleView = '/stream-example-view';
   static const String postsView = '/posts-view';
+  static const String dialogExampleView = '/dialog-example-view';
   static const all = <String>{
     startupView,
     homeView,
@@ -37,6 +39,7 @@ class Routes {
     reactiveExampleView,
     streamExampleView,
     postsView,
+    dialogExampleView,
   };
 }
 
@@ -52,6 +55,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.reactiveExampleView, page: ReactiveExampleView),
     RouteDef(Routes.streamExampleView, page: StreamExampleView),
     RouteDef(Routes.postsView, page: PostsView),
+    RouteDef(Routes.dialogExampleView, page: DialogExampleView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -101,6 +105,12 @@ class StackedRouter extends RouterBase {
     PostsView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const PostsView(),
+        settings: data,
+      );
+    },
+    DialogExampleView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const DialogExampleView(),
         settings: data,
       );
     },
@@ -233,6 +243,22 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.postsView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToDialogExampleView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.dialogExampleView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

@@ -3,6 +3,7 @@ import 'package:architecture/services/counter_service.dart';
 import 'package:architecture/services/media_service.dart';
 import 'package:architecture/services/posts_service.dart';
 import 'package:architecture/services/shared_preferences_service.dart';
+import 'package:architecture/ui/views/dialog_example/dialog_example_view.dart';
 import 'package:architecture/ui/views/future_example/future_example_view.dart';
 import 'package:architecture/ui/views/future_example/future_example_view_model.dart';
 import 'package:architecture/ui/views/home/home_view.dart';
@@ -27,9 +28,11 @@ import 'package:stacked_services/stacked_services.dart';
     MaterialRoute(page: ReactiveExampleView),
     MaterialRoute(page: StreamExampleView),
     MaterialRoute(page: PostsView),
+    MaterialRoute(page: DialogExampleView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: DialogService),
     LazySingleton(classType: Api),
     LazySingleton(classType: CounterService),
     LazySingleton(classType: MediaService),
